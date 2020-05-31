@@ -1,0 +1,45 @@
+<th:block th:include="content/write-js"></th:block>
+<div>
+	<p>[[${categoryNm}]]</p>
+	<p>[[${categoryLabelNm}]]</p>
+	
+	<div align="center" style="padding:2%">
+		<form id="writeForm" method="POST" th:action="@{/board/save}">
+		<input type="hidden" name="writer" th:value="${userNm}">
+			<table class="table table-bordered">
+				<colgroup>
+					<col width="15%">
+					<col width="85%">
+				</colgroup>
+				<tr>
+					<th>작성자</th>
+					<td>[[${userNm}]]</td>
+				</tr>
+				<tr>
+					<th>Categoty</th>
+					<td>
+						<select name="categoryNm" id="categoryNm">
+							<option th:value="${categoryNm}" th:text="${categoryLabelNm}"></option>
+							<option value="">-- 카테고리 --</option>
+							<option th:each="data : ${categoryList}" th:value="${data.nm}" th:text="${data.labelNm}"></option>
+						</select>&nbsp;
+						<label><input type="checkbox" name="hidden" id="hidden" value="1">  비공개</label>
+					</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td><input type="text" name="title" id="title" style="width:100%"></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea id="summernote" name="content"> </textarea></td>
+				</tr>
+			</table>
+			
+			<div style="margin-top:20px;" align="right">
+				<a class="btn btn-primary" href="javascript:writing()">작성</a>			
+				<a class="btn btn-primary" href="javascript:history.back()">취소</a>
+			</div>			
+		</form>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<script th:inline="javascript">
+$(document).ready(function() {
+	$('#summernote').summernote({
+        height: 300,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true,                  // set focus to editable area after initializing summernote
+	});
+});
+
+function writing(){
+	if($('#categoryNm').val().length < 1) { alert('카테고리를 선택해주세요.'); $('#categoryNm').focus(); return false; }
+	if($('#title').val().length < 1) { alert('제목을 입력해주세요.'); $('#title').focus(); return false; }
+	if($('#summernote').val().length < 1) { alert('내용을 입력해주세요.'); $('#summernote').focus(); return false; }
+	
+	if(!$('#hidden').is(":checked")) $('#hidden').val(0);
+	$('#writeForm').submit();
+}
+</script>

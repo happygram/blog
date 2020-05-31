@@ -1,0 +1,37 @@
+<!--
+	index.html 
+	 -->
+<!-- Admin navigation -->
+<ul th:fragment="index_admin_nav" 
+	th:each="key : ${authorityMap.keySet()}"
+	th:if="${authorityMap.get(key)} == 'ROLE_ADMIN'" 
+	class="nav bg-blue justify-content-end">
+	<li class="nav-item"><a th:href="@{/admin}" class="nav-link active" href="#"><i class="fas fa-cog"></i></a></li>
+</ul>
+
+<!-- 
+	write.html 
+	-->
+<!-- 작성 버튼 -->
+<a th:fragment="write_write_btn" 
+	th:each="key : ${authorityMap.keySet()}"
+	th:if="${authorityMap.get(key)} == 'ROLE_ADMIN'"
+	th:href="@{'/board/write?categoryNm='+${categoryNm}+'&categoryLabelNm='+${categoryLabelNm}}"
+	role="button" class="btn btn-primary btn-sm">작성</a>
+<!-- 
+	common-sidebar.html 
+	-->
+<!-- 추가 버튼 -->
+<button th:fragment="category_add_btn" 
+	th:each="key : ${authorityMap.keySet()}"
+	th:if="${authorityMap.get(key)} == 'ROLE_ADMIN'"
+	type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#addCategoryModal" data-whatever="@mdo">
+	<i class="fas fa-plus"></i>
+</button>
+<!-- 로그아웃 버튼 -->
+<form th:fragment="category_logout_form"
+	th:each="key : ${authorityMap.keySet()}"
+	th:if="${authorityMap.get(key)} == 'ROLE_ADMIN'" 
+	id="logout_form" th:action="@{/logout}" method="POST" class="fixed-bottom">
+	<input id="logout_btn" type="button" class="btn btn-primary" data-placement="top" value="로그아웃">
+</form>

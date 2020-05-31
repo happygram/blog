@@ -1,0 +1,28 @@
+<th:block th:include="content/main-js"></th:block>
+<div class="container-fluid">
+	<div class="d-flex align-items-center mt-5">
+		<h4 class="my-0 mr-md-auto font-weight-normal">[[${categoryLabelNm}]]</h4>
+		<div th:replace="authority :: write_write_btn"></div>
+	</div>
+	
+	<hr>
+	<div class="row">
+		<div class="col-lg-8 col-md-10 mx-auto" >
+			<div class="post-preview" th:if="${#lists.size(boardList)} > 0" th:each="list : ${boardList}">
+				<a th:href="@{'/board/list/' + ${list.seqNo}}" th:if="${list.categoryNm} == ${categoryNm}">
+					<h3 class="post-title" th:text="${list.title}"></h3>
+				</a>
+				<h6 class="post-subtitle" th:text="${#strings.abbreviate(list.content,15)}"></h6>
+				<a class="post-meta" th:text="${list.regDtTm}"></a>
+				<hr>
+				<!-- Pager -->
+			</div>
+			<div class="clearfix" th:if="${#lists.size(boardList)} > 0">
+				<a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+			</div>
+			<div class="post-preview" align="center" th:if="${#lists.size(boardList)} == 0">
+				<a><h2 class="post-title">작성된 게시글이 없습니다.</h2></a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<th:block th:include="content/board-list-js"></th:block>
+<div>
+	<div align="center" style="padding:2%">
+		<table class="table table-bordered">
+			<colgroup>
+				<col width="15%">
+				<col width="55%">
+				<col width="15%">
+				<col width="15%">
+			</colgroup>
+			<tr>
+				<th>제목</th>
+				<td th:text="${article.title}"></td>
+				<th>조회수</th>
+				<td th:text="${article.hit}"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="3">
+					<div id="article"></div>
+				</td>
+			</tr>
+		</table>
+		
+		<div style="margin-top:20px;" align="right">
+			<a class="btn btn-primary" href="javascript:history.back()">목록</a>
+		</div>			
+	</div>
+</div>

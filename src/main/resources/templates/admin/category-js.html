@@ -1,0 +1,22 @@
+<script th:inline="javascript">
+$(function(){
+	// Ajax call for category
+	$.ajax({
+		method : 'GET',
+		url: BASE_CONTEXT_PATH + 'category',
+	}).done(function(result){
+		console.log(result);
+		// Category tables
+		$('#category_table').DataTable({
+			data : result,
+		    columns: [
+		        { data: 'nm' },
+		        { data: 'labelNm' },
+		        { data: 'orderNo' }
+		    ]
+		});
+	}).fail(function(xhr, ajaxOptions, thrownError){
+		alert(xhr);
+	});
+});
+</script>
