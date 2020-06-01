@@ -1,4 +1,4 @@
-# Refereces
+# References
 * Clean Blog
 https://startbootstrap.com/template-overviews/clean-blog/
 * Side bar
